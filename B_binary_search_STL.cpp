@@ -167,7 +167,7 @@ signed main()
 {
   fast_io;
   int t = 1;
-  cin >> t;
+  // cin >> t;
   Fo(i, 1, t)
   { // eprintf("--- Case #%lld start ---\n", i);eprintf("Case #%lld: ", i);solve();eprintf("--- Case #%lld end ---\n", i);eprintf("time = %.5lf\n", getCurrentTime());eprintf("++++++++++++++++++++\n");
     solve();
@@ -177,5 +177,41 @@ signed main()
 
 void solve()
 {
-  
+  int n, q;
+  cin >> n >> q;
+  vi v(n);
+  cin >> v;
+  sortall(v);
+  string query;
+  int l;
+  while (q--)
+  {
+    cin >> query;
+    if (query == "binary_search")
+    {
+      cin >> l;
+      if (binary_search(all(v), l))
+        print("found");
+      else
+        print("not found");
+    }
+    if (query == "lower_bound")
+    {
+      cin >> l;
+      int u = lb(all(v), l) - begin(v);
+      if (!binary_search(all(v), v[u]))
+        pm;
+      else
+        print(v[u]);
+    }
+    if (query == "upper_bound")
+    {
+      cin >> l;
+      int u = ub(all(v), l) - begin(v);
+      if (!binary_search(all(v), v[u]))
+        pm;
+      else
+        print(v[u]);
+    }
+  }
 }
