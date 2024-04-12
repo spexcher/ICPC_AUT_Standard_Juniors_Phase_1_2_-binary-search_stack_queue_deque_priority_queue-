@@ -183,9 +183,9 @@ void solve()
   cin >> v;
   stack<int> st;
   vi ngei(n);
-  Fo(i, n - 1, 0)
+  for (int i = n - 1; i >= 0; i--)
   {
-    while (!st.empty() and v[i] > v[st.top()])
+    while (!st.empty() and v[i] >= v[st.top()])
     {
       st.pop();
     }
